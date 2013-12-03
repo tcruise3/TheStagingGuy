@@ -1,0 +1,62 @@
+<section id="footer_teasers_wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="footer_teaser col-sm-4 col-md-4">
+        <h3>Contact us</h3>
+
+        <p>Staging your home?<br>We welcome your questions and special requests.<br>Contact The Staging Guy for
+          affordable home staging services anytime!</p>
+
+        <p><i class="fa fa-phone"></i> (512) 537-4489</p>
+
+        <p><i class="fa fa-envelope"></i>
+          <script language="JavaScript">
+              var username = "richard";
+              var hostname = "thestagingguy.com";
+              var linktext = username + "@" + hostname;
+              document.write("<a href='" + "mail" + "to:" + username + "@" + hostname + "'>" + linktext + "</a>");
+          </script>
+        </p>
+      </div>
+      <div class="footer_teaser col-sm-4 col-md-4">
+        <h3>Latest Updates</h3>
+        <ul class="media-list">
+          <% count = 0 %>
+          <% Facebook.GetPosts.each do |post| %>
+              <% if post.has_key?('message') and count < 3 %>
+                  <li class="media">
+                    <a href="#" class="media-date"><span><%= Facebook.formatDate(post['created_time']) %></span></a>
+                    <h5 class="media-heading">
+                      <a href="<%= post['link'] %>" onclick="window.open (this.href, 'child', 'height=600,width=800'); return false"><%= post['message'] %></a>
+                    </h5>
+                  </li>
+                  <% count += 1 %>
+              <% end %>
+          <% end %>
+        </ul>
+
+      </div>
+      <div class="footer_teaser col-sm-4 col-md-4" id="latest-photos">
+        <h3>Recent Photos</h3>
+        <ul>
+          <% count = 0 %>
+          <% Facebook.GetLatestPhotos.each do |photo| %>
+              <% if count < 10 %>
+                  <li>
+                    <a rel='prettyPhoto' title='<%= photo['name'] %>' href='<%= photo['link'] %>'><img src='<%= photo['picture'] %>'/></a>
+                  </li>
+                  <% count += 1 %>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="text-center"> Copyright ©2013 All Rights Reserved</div>
+    </div>
+  </div>
+</section>
